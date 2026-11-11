@@ -1,5 +1,19 @@
 import random
 
+def read_positive_number(message):
+    """Просит ввести целое положительное число."""
+    while True:
+        try:
+            number = int(input(message))
+
+            if number > 0:
+                return number
+
+            print("Число должно быть больше нуля.")
+
+        except ValueError:
+            print("Нужно ввести целое число.")
+
 def create_array(rows, columns):
     """Создаёт массив вручную или заполняет случайными числами."""
 
