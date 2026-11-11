@@ -122,6 +122,17 @@ def column_with_largest_sum(matrix):
             print(f"Это столбец {j + 1}")
 
 
+def main_diagonal_sum(matrix):
+    total = 0
+
+    diagonal_size = min(len(matrix), len(matrix[0]))
+
+    for i in range(diagonal_size):
+        total += matrix[i][i]
+
+    print(f"Сумма главной диагонали: {total}")
+
+
 def run_functions(matrix):
     while True:
         print("\n=== Функции варианта 5 ===")
