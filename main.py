@@ -1,3 +1,54 @@
+import random
+
+def create_array(rows, columns):
+    """Создаёт массив вручную или заполняет случайными числами."""
+
+    while True:
+        print("\nСоздание массива:")
+        print("1. Ввести элементы вручную")
+        print("2. Заполнить случайными числами")
+        print("3. Назад")
+
+        choice = input("Выберите пункт: ")
+
+        if choice == "1":
+            matrix = []
+
+            for i in range(rows):
+                row = []
+
+                for j in range(columns):
+                    while True:
+                        try:
+                            value = int(input(f"Введите элемент [{i}][{j}]: "))
+                            row.append(value)
+                            break
+                        except ValueError:
+                            print("Нужно ввести целое число.")
+
+                matrix.append(row)
+
+            return matrix
+
+        elif choice == "2":
+            matrix = []
+
+            for i in range(rows):
+                row = []
+
+                for j in range(columns):
+                    row.append(random.randint(0, 100))
+
+                matrix.append(row)
+
+            return matrix
+
+        elif choice == "3":
+            return None
+
+        else:
+            print("Такого пункта нет. Попробуйте ещё раз.")
+
 def main():
     rows = None
     columns = None
