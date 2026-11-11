@@ -94,7 +94,6 @@ def rows_with_ten(matrix):
 
     for i in range(len(matrix)):
         if 10 in matrix[i]:
-            # Номер показываем с единицы, как обычно нумеруют строки.
             print(f"В строке {i + 1} есть число 10")
             found = True
 
@@ -131,6 +130,19 @@ def main_diagonal_sum(matrix):
         total += matrix[i][i]
 
     print(f"Сумма главной диагонали: {total}")
+
+
+def replace_below_first_row_sum(matrix):
+    first_row_sum = sum(matrix[0])
+    print(f"Сумма первой строки: {first_row_sum}")
+
+    for i in range(len(matrix)):
+        for j in range(len(matrix[i])):
+            if matrix[i][j] < first_row_sum:
+                matrix[i][j] = first_row_sum
+
+    print("Массив после замены:")
+    show_array(matrix)
 
 
 def run_functions(matrix):
@@ -198,7 +210,7 @@ def main():
             if matrix is None:
                 print("Сначала создайте массив.")
             else:
-                print("Здесь появится меню пяти функций вашего варианта.")
+                run_functions(matrix)
 
         elif choice == "5":
             print("Программа завершена.")
