@@ -89,6 +89,18 @@ def row_and_column_sums(matrix):
 
         print(f"Сумма столбца {j + 1}: {total}")
 
+def rows_with_ten(matrix):
+    found = False
+
+    for i in range(len(matrix)):
+        if 10 in matrix[i]:
+            # Номер показываем с единицы, как обычно нумеруют строки.
+            print(f"В строке {i + 1} есть число 10")
+            found = True
+
+    if not found:
+        print("Числа 10 в массиве нет.")
+
 
 def run_functions(matrix):
     while True:
