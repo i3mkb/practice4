@@ -72,6 +72,24 @@ def show_array(matrix):
     for row in matrix:
         print(row)
 
+
+def row_and_column_sums(matrix):
+    # Суммы строк
+    for i in range(len(matrix)):
+        print(f"Сумма строки {i + 1}: {sum(matrix[i])}")
+
+    # Суммы столбцов
+    columns = len(matrix[0])
+
+    for j in range(columns):
+        total = 0
+
+        for i in range(len(matrix)):
+            total += matrix[i][j]
+
+        print(f"Сумма столбца {j + 1}: {total}")
+
+
 def run_functions(matrix):
     while True:
         print("\n=== Функции варианта 5 ===")
