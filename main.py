@@ -63,6 +63,15 @@ def create_array(rows, columns):
         else:
             print("Такого пункта нет. Попробуйте ещё раз.")
 
+def show_array(matrix):
+    """Печатает массив построчно."""
+    if matrix is None:
+        print("Сначала создайте массив.")
+        return
+
+    for row in matrix:
+        print(row)
+
 def main():
     rows = None
     columns = None
