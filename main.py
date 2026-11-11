@@ -101,6 +101,26 @@ def rows_with_ten(matrix):
     if not found:
         print("Числа 10 в массиве нет.")
 
+def column_with_largest_sum(matrix):
+    columns = len(matrix[0])
+    sums = []
+
+    for j in range(columns):
+        total = 0
+
+        for i in range(len(matrix)):
+            total += matrix[i][j]
+
+        sums.append(total)
+
+    largest_sum = max(sums)
+
+    print(f"Наибольшая сумма: {largest_sum}")
+
+    for j in range(columns):
+        if sums[j] == largest_sum:
+            print(f"Это столбец {j + 1}")
+
 
 def run_functions(matrix):
     while True:
