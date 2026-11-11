@@ -99,7 +99,10 @@ def rows_with_ten(matrix):
         print("Числа 10 в массиве нет.")
 
 def column_with_largest_sum(matrix):
-    '''	Функция № 21: столбец с наибольшей суммой'''
+    """Функция № 21: столбец с наибольшей суммой"""
+
+    if not matrix:
+        return
 
     columns = len(matrix[0])
     sums = []
@@ -107,19 +110,17 @@ def column_with_largest_sum(matrix):
     for j in range(columns):
         total = 0
 
-        for i in range(len(matrix)):
-            total += matrix[i][j]
+        for row in matrix:
+            total += row[j]
 
         sums.append(total)
 
     largest_sum = max(sums)
-
     print(f"Наибольшая сумма: {largest_sum}")
 
-    for j in range(columns):
-        if sums[j] == largest_sum:
-            print(f"Это столбец {j + 1}")
-
+    for j, col_sum in enumerate(sums, start=1):
+        if col_sum == largest_sum:
+            print(f"Это столбец {j}")
 
 def main_diagonal_sum(matrix):
     '''Функция № 23: сумма главной диагонали'''
