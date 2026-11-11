@@ -17,7 +17,6 @@ def read_positive_number(message):
 
 def create_array(rows, columns):
     """Создаёт массив вручную или заполняет случайными числами."""
-
     while True:
         print("\nСоздание массива:")
         print("1. Ввести элементы вручную")
@@ -45,24 +44,24 @@ def create_array(rows, columns):
 
             return matrix
 
-        elif choice == "2":
+        if choice == "2":
             matrix = []
 
-            for i in range(rows):
+            for _ in range(rows):
                 row = []
 
-                for j in range(columns):
+                for _ in range(columns):
                     row.append(random.randint(0, 100))
 
                 matrix.append(row)
 
             return matrix
 
-        elif choice == "3":
+        if choice == "3":
             return None
 
-        else:
-            print("Такого пункта нет. Попробуйте ещё раз.")
+        print("Такого пункта нет. Попробуйте ещё раз.")
+
 
 def show_array(matrix):
     """Печатает массив построчно."""
