@@ -72,6 +72,33 @@ def show_array(matrix):
     for row in matrix:
         print(row)
 
+def run_functions(matrix):
+    while True:
+        print("\n=== Функции варианта 5 ===")
+        print("1. Суммы строк и столбцов")
+        print("2. Найти строки, содержащие число 10")
+        print("3. Найти столбец с наибольшей суммой")
+        print("4. Найти сумму главной диагонали")
+        print("5. Заменить числа меньше суммы первой строки")
+        print("6. Назад")
+
+        choice = input("Выберите функцию: ")
+
+        if choice == "1":
+            row_and_column_sums(matrix)
+        elif choice == "2":
+            rows_with_ten(matrix)
+        elif choice == "3":
+            column_with_largest_sum(matrix)
+        elif choice == "4":
+            main_diagonal_sum(matrix)
+        elif choice == "5":
+            replace_below_first_row_sum(matrix)
+        elif choice == "6":
+            break
+        else:
+            print("Такого пункта нет.")
+
 def main():
     rows = None
     columns = None
