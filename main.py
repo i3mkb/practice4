@@ -75,20 +75,14 @@ def show_array(matrix):
 
 
 def row_and_column_sums(matrix):
-    '''Функция № 6: суммы строк и столбцов'''
+    """Функция № 6: суммы строк и столбцов"""
 
-    for i in range(len(matrix)):
-        print(f"Сумма строки {i + 1}: {sum(matrix[i])}")
+    for i, row in enumerate(matrix, start=1):
+        print(f"Сумма строки {i}: {sum(row)}")
 
-    columns = len(matrix[0])
+    for j, col in enumerate(zip(*matrix), start=1):
+        print(f"Сумма столбца {j}: {sum(col)}")
 
-    for j in range(columns):
-        total = 0
-
-        for i in range(len(matrix)):
-            total += matrix[i][j]
-
-        print(f"Сумма столбца {j + 1}: {total}")
 
 def rows_with_ten(matrix):
     '''	Функция № 16: строки с числом 10'''
