@@ -89,10 +89,11 @@ def rows_with_ten(matrix):
 
     found = False
 
-    for i in range(len(matrix)):
-        if 10 in matrix[i]:
-            print(f"В строке {i + 1} есть число 10")
+    for i, row in enumerate(matrix, start=1):
+        if 10 in row:
+            print(f"В строке {i} есть число 10")
             found = True
+
 
     if not found:
         print("Числа 10 в массиве нет.")
