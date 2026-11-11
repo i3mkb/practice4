@@ -1,3 +1,4 @@
+'''Практическая работа 4 работа с матрицами'''
 import random
 
 def read_positive_number(message):
@@ -74,11 +75,11 @@ def show_array(matrix):
 
 
 def row_and_column_sums(matrix):
-    # Суммы строк
+    '''Функция № 6: суммы строк и столбцов'''
+
     for i in range(len(matrix)):
         print(f"Сумма строки {i + 1}: {sum(matrix[i])}")
 
-    # Суммы столбцов
     columns = len(matrix[0])
 
     for j in range(columns):
@@ -90,6 +91,8 @@ def row_and_column_sums(matrix):
         print(f"Сумма столбца {j + 1}: {total}")
 
 def rows_with_ten(matrix):
+    '''	Функция № 16: строки с числом 10'''
+
     found = False
 
     for i in range(len(matrix)):
@@ -101,6 +104,8 @@ def rows_with_ten(matrix):
         print("Числа 10 в массиве нет.")
 
 def column_with_largest_sum(matrix):
+    '''	Функция № 21: столбец с наибольшей суммой'''
+
     columns = len(matrix[0])
     sums = []
 
@@ -122,6 +127,8 @@ def column_with_largest_sum(matrix):
 
 
 def main_diagonal_sum(matrix):
+    '''Функция № 23: сумма главной диагонали'''
+
     total = 0
 
     diagonal_size = min(len(matrix), len(matrix[0]))
@@ -133,19 +140,24 @@ def main_diagonal_sum(matrix):
 
 
 def replace_below_first_row_sum(matrix):
+    '''Функция № 29: замена элементов'''
+
     first_row_sum = sum(matrix[0])
     print(f"Сумма первой строки: {first_row_sum}")
 
-    for i in range(len(matrix)):
-        for j in range(len(matrix[i])):
-            if matrix[i][j] < first_row_sum:
-                matrix[i][j] = first_row_sum
+    for row in matrix:
+        for j, val in enumerate(row):
+            if val < first_row_sum:
+                row[j] = first_row_sum
+
 
     print("Массив после замены:")
     show_array(matrix)
 
 
 def run_functions(matrix):
+    '''Меню выполнения функций'''
+
     while True:
         print("\n=== Функции варианта 5 ===")
         print("1. Суммы строк и столбцов")
@@ -173,6 +185,8 @@ def run_functions(matrix):
             print("Такого пункта нет.")
 
 def main():
+    '''Основное меню'''
+
     rows = None
     columns = None
     matrix = None
@@ -191,7 +205,6 @@ def main():
             rows = read_positive_number("Введите количество строк: ")
             columns = read_positive_number("Введите количество столбцов: ")
 
-            # После смены размеров старый массив уже не подходит.
             matrix = None
 
         elif choice == "2":
