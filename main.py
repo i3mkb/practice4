@@ -1,19 +1,25 @@
 '''Практическая работа 4 работа с матрицами'''
 import random
 
+def read_integer(message):
+    """Считывает целое число."""
+    while True:
+        try:
+            return int(input(message))
+        except ValueError:
+            print("Нужно ввести целое число.")
+
+
 def read_positive_number(message):
     """Просит ввести целое положительное число."""
     while True:
-        try:
-            number = int(input(message))
+        number = read_integer(message)
 
-            if number > 0:
-                return number
+        if number > 0:
+            return number
 
-            print("Число должно быть больше нуля.")
+        print("Число должно быть больше нуля.")
 
-        except ValueError:
-            print("Нужно ввести целое число.")
 
 def create_array(rows, columns):
     """Создаёт массив вручную или заполняет случайными числами."""
@@ -27,39 +33,23 @@ def create_array(rows, columns):
 
         if choice == "1":
             matrix = []
-
             for i in range(rows):
                 row = []
-
                 for j in range(columns):
-                    while True:
-                        try:
-                            value = int(input(f"Введите элемент [{i}][{j}]: "))
-                            row.append(value)
-                            break
-                        except ValueError:
-                            print("Нужно ввести целое число.")
-
+                    value = int(input(f"Введите элемент [{i}][{j}]: "))
+                    row.append(value)
                 matrix.append(row)
-
             return matrix
-
         if choice == "2":
             matrix = []
-
             for _ in range(rows):
                 row = []
-
                 for _ in range(columns):
                     row.append(random.randint(0, 100))
-
                 matrix.append(row)
-
             return matrix
-
         if choice == "3":
             return None
-
         print("Такого пункта нет. Попробуйте ещё раз.")
 
 
@@ -68,66 +58,51 @@ def show_array(matrix):
     if matrix is None:
         print("Сначала создайте массив.")
         return
-
     for row in matrix:
         print(row)
 
 
 def row_and_column_sums(matrix):
     """Функция № 6: суммы строк и столбцов"""
-
     for i, row in enumerate(matrix, start=1):
         print(f"Сумма строки {i}: {sum(row)}")
-
     for j, col in enumerate(zip(*matrix), start=1):
         print(f"Сумма столбца {j}: {sum(col)}")
 
 
 def rows_with_ten(matrix):
-    '''	Функция № 16: строки с числом 10'''
-
+    """Функция № 16: строки с числом 10"""
     found = False
-
     for i, row in enumerate(matrix, start=1):
         if 10 in row:
             print(f"В строке {i} есть число 10")
             found = True
-
-
     if not found:
         print("Числа 10 в массиве нет.")
 
+
 def column_with_largest_sum(matrix):
     """Функция № 21: столбец с наибольшей суммой"""
-
     if not matrix:
         return
-
     columns = len(matrix[0])
     sums = []
-
     for j in range(columns):
         total = 0
-
         for row in matrix:
             total += row[j]
-
         sums.append(total)
-
     largest_sum = max(sums)
     print(f"Наибольшая сумма: {largest_sum}")
-
     for j, col_sum in enumerate(sums, start=1):
         if col_sum == largest_sum:
             print(f"Это столбец {j}")
 
+
 def main_diagonal_sum(matrix):
-    '''Функция № 23: сумма главной диагонали'''
-
+    """Функция № 23: сумма главной диагонали"""
     total = 0
-
     diagonal_size = min(len(matrix), len(matrix[0]))
-
     for i in range(diagonal_size):
         total += matrix[i][i]
 
@@ -135,8 +110,7 @@ def main_diagonal_sum(matrix):
 
 
 def replace_below_first_row_sum(matrix):
-    '''Функция № 29: замена элементов'''
-
+    """Функция № 29: замена элементов"""
     first_row_sum = sum(matrix[0])
     print(f"Сумма первой строки: {first_row_sum}")
 
@@ -151,8 +125,7 @@ def replace_below_first_row_sum(matrix):
 
 
 def run_functions(matrix):
-    '''Меню выполнения функций'''
-
+    """Меню выполнения функций"""
     while True:
         print("\n=== Функции варианта 5 ===")
         print("1. Суммы строк и столбцов")
@@ -179,9 +152,9 @@ def run_functions(matrix):
         else:
             print("Такого пункта нет.")
 
-def main():
-    '''Основное меню'''
 
+def main():
+    """Основное меню"""
     rows = None
     columns = None
     matrix = None
@@ -201,7 +174,6 @@ def main():
             columns = read_positive_number("Введите количество столбцов: ")
 
             matrix = None
-
         elif choice == "2":
             if rows is None or columns is None:
                 print("Сначала задайте размеры массива.")
@@ -210,20 +182,16 @@ def main():
 
                 if new_matrix is not None:
                     matrix = new_matrix
-
         elif choice == "3":
             show_array(matrix)
-
         elif choice == "4":
             if matrix is None:
                 print("Сначала создайте массив.")
             else:
                 run_functions(matrix)
-
         elif choice == "5":
             print("Программа завершена.")
             break
-
         else:
             print("Такого пункта нет. Попробуйте ещё раз.")
 
